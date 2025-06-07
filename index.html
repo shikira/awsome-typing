@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Typing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Awesome Typing</h1>
+            <p>AWSの知識を楽しく身につけよう！</p>
+        </header>
+
+        <!-- メニュー画面 -->
+        <div id="menu" class="screen">
+            <div class="mode-selection">
+                <h2>難易度を選択してください（全10問）</h2>
+                <button class="mode-btn easy" onclick="startGame('easy')">
+                    <span class="mode-title">EASY モード</span>
+                    <span class="mode-desc">AWSサービス正式名称 (10秒/問)</span>
+                </button>
+                <button class="mode-btn normal" onclick="startGame('normal')">
+                    <span class="mode-title">NORMAL モード</span>
+                    <span class="mode-desc">AWS簡潔説明文 (10秒/問)</span>
+                </button>
+                <button class="mode-btn hard" onclick="startGame('hard')">
+                    <span class="mode-title">HARD モード</span>
+                    <span class="mode-desc">AWS詳細説明文 (10秒/問)</span>
+                </button>
+            </div>
+            
+            <div class="ranking-section">
+                <h3>ランキング</h3>
+                <div class="ranking-tabs">
+                    <button class="tab-btn active" onclick="showRanking('easy')">EASY</button>
+                    <button class="tab-btn" onclick="showRanking('normal')">NORMAL</button>
+                    <button class="tab-btn" onclick="showRanking('hard')">HARD</button>
+                </div>
+                <div id="ranking-easy" class="ranking-list">
+                    <p class="no-data">まだ記録がありません</p>
+                </div>
+                <div id="ranking-normal" class="ranking-list" style="display: none;">
+                    <p class="no-data">まだ記録がありません</p>
+                </div>
+                <div id="ranking-hard" class="ranking-list" style="display: none;">
+                    <p class="no-data">まだ記録がありません</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ゲーム画面 -->
+        <div id="game" class="screen" style="display: none;">
+            <div class="game-header">
+                <div class="game-info">
+                    <span id="mode-display"></span>
+                    <span id="score">クリア数: 0</span>
+                    <span id="timer">残り時間: 5秒</span>
+                </div>
+                <button class="quit-btn" onclick="quitGame()">ゲーム終了</button>
+            </div>
+            
+            <div class="game-content">
+                <div id="question" class="question">
+                    <div id="question-display"></div>
+                </div>
+                <div class="typing-area">
+                    <div id="typed-text" class="typed-text"></div>
+                    <input type="text" id="answer" placeholder="タイピングを開始してください" autocomplete="off" style="opacity: 0; position: absolute; left: -9999px;">
+                </div>
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- 結果画面 -->
+        <div id="result" class="screen" style="display: none;">
+            <div class="result-content">
+                <h2>🎉 ゲーム終了！</h2>
+                <div class="result-stats">
+                    <div class="stat">
+                        <span class="stat-label">難易度</span>
+                        <span id="result-mode" class="stat-value"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">クリア数</span>
+                        <span id="result-score" class="stat-value"></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">プレイ時間</span>
+                        <span id="result-time" class="stat-value"></span>
+                    </div>
+                </div>
+                
+                <div class="current-ranking">
+                    <h3>現在のランキング</h3>
+                    <div id="current-ranking-list" class="ranking-list"></div>
+                </div>
+                
+                <button class="menu-btn" onclick="backToMenu()">メニューに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
